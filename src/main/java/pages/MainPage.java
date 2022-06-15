@@ -1,46 +1,48 @@
 package pages;
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.$$;
 
 public class MainPage {
-    public SelenideElement mainSignInButton() {
-        return $("[href='/login']").as("кнопка логина");
+    public SelenideElement logoWebsite() {
+        return $(".logo.img-responsive").as("лого сайта");
     }
 
-    public SelenideElement loginInput() {
-        return $("[id='login_field']").as("поле ввода логина");
+    public SelenideElement firstNameProduct() {
+        return $(byText("Faded Short Sleeve T-shirts")).as("наименование первого товара");
+    };
+
+    public SelenideElement secondNameProduct() {
+        return $(byText("Blouse")).as("наименование второго товара для корзины");
+    };
+
+    public SelenideElement addToCart1() {
+        return $("[data-id-product='1']").as("кнопка добавить у первого товара");
     }
 
-    public SelenideElement passwordInput() {
-        return $("[id='password']").as("поле ввода пароля");
+    public SelenideElement addToCart2() {
+        return $("[data-id-product='2']").as("кнопка добавить у второго товара");
     }
 
-    public SelenideElement enterButton() {
-        return $(".js-sign-in-button").as("кнопка Войти");
+    public SelenideElement shoppingCart() {
+        return $(byText("Cart")).as("корзина");
     }
 
-    public SelenideElement header() {
-        return $(".Header.js-details-container").as("шапка страници с выбором разделов");
+    public SelenideElement headerCart() {
+        return $(byText("Shopping-cart summary")).as("текстовый элемент 'Общая стоимость в корзине'");
     }
 
-    public SelenideElement commandList() {
-        return $(".js-feature-preview-indicator-container")
-                .as("кнопка открытия тулбара");
+    public ElementsCollection cartProductList() {
+        return $$(".icon-trash").as("иконка удалить товар из корзины");
     }
 
-    public SelenideElement myProfileButton() {
-        return $(byText("Your profile")).
-                as("Кнопка входа в профиль");
+    public SelenideElement sizeInput() {
+        return $(".selector").as("инпут размера");
     }
 
-    public SelenideElement myName() {
-        return $(("[itemprop='name']")).as("Имя пользователя");
-    }
-    public SelenideElement error() {
-        return $(".flash.flash-full.flash-error").as("ошибка");
-    }
 
 }
 
