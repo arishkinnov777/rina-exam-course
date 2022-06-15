@@ -12,19 +12,19 @@ public class MainPage {
     }
 
     public SelenideElement firstNameProduct() {
-        return $(byText("Faded Short Sleeve T-shirts"));
+        return $(byText("Faded Short Sleeve T-shirts")).as("наименование первого товара");
     };
 
     public SelenideElement secondNameProduct() {
-        return $(byText("Blouse"));
+        return $(byText("Blouse")).as("наименование второго товара для корзины");
     };
 
     public SelenideElement addToCart1() {
-        return $("[data-id-product='1']").as("добавить в корзину одним кликом");
+        return $("[data-id-product='1']").as("кнопка добавить у первого товара");
     }
 
     public SelenideElement addToCart2() {
-        return $("[data-id-product='2']").as("добавить в корзину одним кликом");
+        return $("[data-id-product='2']").as("кнопка добавить у второго товара");
     }
 
     public SelenideElement shoppingCart() {
@@ -32,7 +32,7 @@ public class MainPage {
     }
 
     public SelenideElement headerCart() {
-        return $(byText("Shopping-cart summary")).as("шапка страници с выбором разделов");
+        return $(byText("Shopping-cart summary")).as("текстовый элемент 'Общая стоимость в корзине'");
     }
 
     public ElementsCollection cartProductList() {

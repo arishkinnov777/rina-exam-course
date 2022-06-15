@@ -25,37 +25,39 @@ public class ShopTest {
     @DisplayName("Добавление товаров в корзину")
     public void shouldAuthorizeTest() {
 
-        open("http://automationpractice.com/index.php");
-        TestPage.mainPage.logoWebsite()
-                .shouldBe(visible);
+        step("Перейти на сайт магазина", () -> {
+            open("http://automationpractice.com/index.php");
+            TestPage.mainPage.logoWebsite()
+                    .shouldBe(visible);
+        });
 
         step("Добавить 2 товара через быструю корзину", () -> {
 
-            TestPage.mainPage.firstNameProduct()
+            TestPage.mainPage.firstNameProduct() // навести курсор на наименование товара
                     .hover();
-            TestPage.mainPage.addToCart1()
+            TestPage.mainPage.addToCart1() // кликнуть на значок быстрой корзины
                     .click();
-            TestPage.mainPage.logoWebsite()
+            TestPage.mainPage.logoWebsite()// кликнуть вне корзины (чтобы выйти из корзины)
                     .click();
 
-            TestPage.mainPage.secondNameProduct()
+            TestPage.mainPage.secondNameProduct() // навести курсор на наименование товара
                     .hover();
-            TestPage.mainPage.addToCart2()
+            TestPage.mainPage.addToCart2() // кликнуть на значок быстрой корзины
                     .click();
-            TestPage.mainPage.logoWebsite()
+            TestPage.mainPage.logoWebsite() // кликнуть вне корзины (чтобы выйти из корзины)
                     .click();
         });
 
         step("Открыть корзину и проверить количество товаров", () -> {
-            TestPage.mainPage.shoppingCart()
+            TestPage.mainPage.shoppingCart() //навести курсов на корзину
                     .hover();
-            TestPage.mainPage.shoppingCart()
+            TestPage.mainPage.shoppingCart() // кликнуть на корзину
                     .click();
 
-            TestPage.mainPage.headerCart()
+            TestPage.mainPage.headerCart() // текстовый элемент 'Shopping-cart summary' в корзине
                     .shouldBe(visible);
 
-            TestPage.mainPage.cartProductList()
+            TestPage.mainPage.cartProductList() // проверить размер корзины
                     .shouldHave(size(2));
         });
     }
